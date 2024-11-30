@@ -2,13 +2,19 @@ package com.alcp.calendar.model;
 
 import com.alcp.calendar.dto.ScheduleRequestDto;
 import com.alcp.calendar.dto.ScheduleResponseDto;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@Entity
+@Table(name = "schedules")
 @Data
 public class Schedule {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "SCHEDULE_ID")
     private Long id;
     private String name;
     private String password;
@@ -21,6 +27,7 @@ public class Schedule {
         this.todo=scheduleRequestDto.getTodo();
         this.date=scheduleRequestDto.getDate();
     }
+
 
     public Long getId() {
         return id;
